@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "title": "張倚恩｜茂華實業股份有限公司",
+    "description": "設備銷售部 業務經理｜茂華實業股份有限公司 Mao Hua Enterprise Co., Ltd",
+    "keywords": "張倚恩,Ian Chang,茂華實業,Mao Hua,設備銷售,業務經理,台中,電子名片,數位名片",
+    "ogUrl": "https://ian-maohua-card.github.io/",
+    "ogImage": "https://ian-maohua-card.github.io/assets/qr_contact.png",
+    "gaTrackingId": "G-XXXXXXXXXX"
+  },
+  "personal": {
+    "name": "張倚恩",
+    "nameEn": "Ian Chang",
+    "title": "業務經理",
+    "titleEn": "Sales Manager",
+    "department": "設備銷售部",
+    "departmentEn": "Equipment Sales Dept.",
+    "mobile": "0978901161",
+    "mobileFormatted": "+886-978-901-161",
+    "phone": "+886-4-23803355",
+    "email": "ian@mao-hua.com.tw",
+    "fax": "+886-4-23801076"
+  },
+  "company": {
+    "name": "茂華實業股份有限公司",
+    "nameEn": "Mao Hua Enterprise Co., Ltd",
+    "nameShort": "茂華實業",
+    "nameShortEn": "Mao Hua",
+    "taxId": "28365727",
+    "address": "408 台中市南屯區永春東一路717號",
+    "addressEn": "717 Yongchun E. 1st Rd., Nantun Dist., Taichung City 408, Taiwan",
+    "website": "https://mao-hua.com.tw"
+  },
+  "social": {
+    "line": "beck830908",
+    "whatsapp": "886978901161",
+    "linkedin": "",
+    "facebook": ""
+  },
+  "bio": {
+    "zh": {
+      "intro": "我是張倚恩，在茂華實業股份有限公司擔任設備銷售部業務經理，專注於提供優質的設備銷售服務與專業諮詢。",
+      "expertiseTitle": "專業領域：",
+      "expertise": [
+        "工業設備銷售與諮詢",
+        "客戶需求分析與解決方案規劃",
+        "售後服務與技術支援",
+        "長期客戶關係維護"
+      ],
+      "contact": "歡迎隨時與我聯繫，討論您的設備需求或任何相關問題。我將竭誠為您服務！"
+    },
+    "en": {
+      "intro": "I am Ian Chang, Sales Manager of Equipment Sales Department at Mao Hua Enterprise Co., Ltd, dedicated to providing quality equipment sales services and professional consultation.",
+      "expertiseTitle": "Expertise:",
+      "expertise": [
+        "Industrial Equipment Sales & Consultation",
+        "Customer Needs Analysis & Solution Planning",
+        "After-Sales Service & Technical Support",
+        "Long-Term Customer Relationship Management"
+      ],
+      "contact": "Feel free to contact me anytime to discuss your equipment needs or any related questions. I look forward to serving you!"
+    }
+  },
+  "assets": {
+    "qrContact": "assets/qr_contact.png",
+    "qrMap": "assets/qr_map.png",
+    "vcard": "zhang_yien_maohua.vcf",
+    "icon192": "assets/icon-192.png",
+    "icon512": "assets/icon-512.png"
+  },
+  "features": {
+    "showBio": true,
+    "showMap": true,
+    "showContactForm": true,
+    "showSocialLinks": true,
+    "formspreeId": "YOUR_FORM_ID",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.7375!2d120.63588!3d24.13944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA4JzIyLjAiTiAxMjDCsDM4JzA5LjIiRQ!5e0!3m2!1szh-TW!2stw!4v1234567890"
+  },
+  "profiles": {
+    "vendor": {
+      "name": "廠商版",
+      "nameEn": "Vendor Version",
+      "showFields": {
+        "name": true,
+        "company": true,
+        "title": true,
+        "mobile": true,
+        "email": true,
+        "phone": false,
+        "address": false,
+        "social": false,
+        "bio": false,
+        "map": false
+      }
+    },
+    "client": {
+      "name": "客戶版",
+      "nameEn": "Client Version",
+      "showFields": {
+        "name": true,
+        "company": true,
+        "title": true,
+        "department": true,
+        "mobile": true,
+        "phone": true,
+        "email": true,
+        "address": true,
+        "social": true,
+        "bio": true,
+        "map": true
+      },
+      "customMessage": "專業工業設備供應，歡迎洽詢！"
+    },
+    "friend": {
+      "name": "好友版",
+      "nameEn": "Friend Version",
+      "showFields": {
+        "name": true,
+        "company": false,
+        "title": false,
+        "mobile": true,
+        "email": true,
+        "phone": false,
+        "address": false,
+        "social": true,
+        "bio": false,
+        "map": false
+      },
+      "customMessage": "很高興認識你！歡迎隨時聊聊 😊"
+    },
+    "association": {
+      "name": "商會版",
+      "nameEn": "Association Version",
+      "showFields": {
+        "name": true,
+        "company": true,
+        "title": true,
+        "department": true,
+        "taxId": true,
+        "mobile": true,
+        "phone": true,
+        "email": true,
+        "address": true,
+        "fax": true,
+        "social": true,
+        "bio": true,
+        "map": true
+      }
+    }
+  }
+}

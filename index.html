@@ -62,6 +62,14 @@
   <link rel="dns-prefetch" href="https://www.google.com" />
   <link rel="preconnect" href="https://www.google.com" crossorigin />
 
+  <!-- PWA Support -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="張倚恩名片" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+
   <!-- Google Analytics 4 -->
   <!-- Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -502,6 +510,223 @@
       border-color: color-mix(in oklab, #10B981 20%, var(--stroke2));
     }
 
+    .contact-form-section {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in oklab, var(--stroke) 92%, transparent);
+      background: color-mix(in oklab, var(--panelB) 78%, transparent);
+      box-shadow: var(--shadow2);
+    }
+    .contact-form-section .title {
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .4px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .3px;
+    }
+    .form-group input,
+    .form-group textarea {
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid color-mix(in oklab, var(--stroke) 92%, transparent);
+      background: color-mix(in oklab, var(--panelA) 65%, transparent);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      transition: border-color .16s var(--ease), background .16s var(--ease);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--stroke2);
+      background: color-mix(in oklab, var(--panelA) 82%, transparent);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.45;
+    }
+    button.submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid color-mix(in oklab, var(--stroke) 92%, transparent);
+      background: linear-gradient(135deg, color-mix(in oklab, var(--accent2) 18%, transparent), color-mix(in oklab, var(--accent1) 18%, transparent));
+      color: color-mix(in oklab, var(--text) 92%, transparent);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: transform .16s var(--ease), background .16s var(--ease), border-color .16s var(--ease);
+      will-change: transform;
+    }
+    button.submit-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: var(--stroke2);
+    }
+    button.submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    button.submit-btn.success {
+      background: color-mix(in oklab, #10B981 18%, var(--panelA) 70%);
+    }
+    .form-status {
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .form-status.success {
+      background: color-mix(in oklab, #10B981 12%, var(--panelA) 70%);
+      color: #10B981;
+    }
+    .form-status.error {
+      background: color-mix(in oklab, #EF4444 12%, var(--panelA) 70%);
+      color: #EF4444;
+    }
+
+    .bio-section {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in oklab, var(--stroke) 92%, transparent);
+      background: color-mix(in oklab, var(--panelB) 78%, transparent);
+      box-shadow: var(--shadow2);
+    }
+    .bio-section .title {
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .4px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bio-toggle {
+      cursor: pointer;
+      user-select: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: color-mix(in oklab, var(--panelA) 50%, transparent);
+      transition: background .16s var(--ease);
+    }
+    .bio-toggle:hover {
+      background: color-mix(in oklab, var(--panelA) 70%, transparent);
+    }
+    .bio-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .4s var(--ease), opacity .3s var(--ease);
+    }
+    .bio-content.expanded {
+      max-height: 1000px;
+      opacity: 1;
+    }
+    .bio-text {
+      color: color-mix(in oklab, var(--text) 88%, transparent);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .bio-text:last-child {
+      margin-bottom: 0;
+    }
+    .bio-list {
+      margin: 14px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .bio-list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: color-mix(in oklab, var(--text) 88%, transparent);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .bio-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 6px;
+      color: var(--accent1);
+      font-weight: 700;
+    }
+
+    .map-section {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in oklab, var(--stroke) 92%, transparent);
+      background: color-mix(in oklab, var(--panelB) 78%, transparent);
+      box-shadow: var(--shadow2);
+    }
+    .map-section .title {
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .4px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .map-toggle {
+      cursor: pointer;
+      user-select: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: color-mix(in oklab, var(--panelA) 50%, transparent);
+      transition: background .16s var(--ease);
+    }
+    .map-toggle:hover {
+      background: color-mix(in oklab, var(--panelA) 70%, transparent);
+    }
+    .map-container {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .4s var(--ease), opacity .3s var(--ease);
+      border-radius: 12px;
+    }
+    .map-container.expanded {
+      max-height: 400px;
+      opacity: 1;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 12px;
+    }
+
     .qrs {
       padding: 16px;
       display:grid;
@@ -518,8 +743,11 @@
       align-items:center;
     }
     .qrbox img {
+      display: block;
       width: 96px;
       height: 96px;
+      flex-shrink: 0;
+      object-fit: contain;
       border-radius: 14px;
       background: var(--qrbg);
       padding: 6px;
@@ -602,6 +830,9 @@
       </div>
 
       <div class="righthead">
+        <div id="langToggle" class="toggle" role="button" tabindex="0" aria-label="switch language">
+          <span>🌐</span><span id="langLabel">English</span>
+        </div>
         <div id="modeToggle" class="toggle" role="button" tabindex="0" aria-label="toggle theme">
           <span>🌓</span><span id="modeLabel">切換淺色</span>
         </div>
@@ -613,47 +844,47 @@
         <div class="inner">
           <div class="top">
             <div class="who">
-              <h1>張倚恩</h1>
+              <h1 data-i18n="name" data-field="name">張倚恩</h1>
               <div class="en">Ian Chang</div>
-              <div class="role"><strong>設備銷售部</strong> · 業務經理</div>
+              <div class="role"><strong data-i18n="department" data-field="department">設備銷售部</strong> · <span data-i18n="position" data-field="position">業務經理</span></div>
             </div>
             <div class="meta">
-              <div class="badge">統編：28365727</div>
-              <div class="badge">Fax：+886-4-23801076</div>
+              <div class="badge"><span data-i18n="taxId">統編</span>：<span data-field="taxId">28365727</span></div>
+              <div class="badge">Fax：<span data-field="fax">+886-4-23801076</span></div>
             </div>
           </div>
 
           <div class="grid reveal delay-3">
             <div class="panel">
               <div class="rows">
-                <div class="row"><div class="k">公司</div><div class="v">茂華實業股份有限公司<span class="sub">Mao Hua Enterprise Co., Ltd</span></div></div>
-                <div class="row"><div class="k">手機</div><div class="v">0978901161</div></div>
-                <div class="row"><div class="k">電話</div><div class="v">+886-4-23803355</div></div>
-                <div class="row"><div class="k">信箱</div><div class="v">ian@mao-hua.com.tw</div></div>
-                <div class="row"><div class="k">地址</div><div class="v">408 台中市南屯區永春東一路717號</div></div>
+                <div class="row"><div class="k" data-i18n="company">公司</div><div class="v"><span data-i18n="companyName" data-field="companyName">茂華實業股份有限公司</span><span class="sub">Mao Hua Enterprise Co., Ltd</span></div></div>
+                <div class="row"><div class="k" data-i18n="mobile">手機</div><div class="v" data-field="mobile">0978901161</div></div>
+                <div class="row"><div class="k" data-i18n="phone">電話</div><div class="v" data-field="phone">+886-4-23803355</div></div>
+                <div class="row"><div class="k" data-i18n="email">信箱</div><div class="v" data-field="email">ian@mao-hua.com.tw</div></div>
+                <div class="row"><div class="k" data-i18n="address">地址</div><div class="v" data-i18n="addressValue" data-field="addressValue">408 台中市南屯區永春東一路717號</div></div>
               </div>
               <div class="actions">
-                <a class="btn primary" href="tel:+886978901161">📞 撥打</a>
-                <a class="btn" href="mailto:ian@mao-hua.com.tw">✉️ Email</a>
-                <a class="btn ghost" href="zhang_yien_maohua.vcf" download>💾 存聯絡人</a>
-                <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=408%20%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8D%97%E5%B1%AF%E5%8D%80%E6%B0%B8%E6%98%A5%E6%9D%B1%E4%B8%80%E8%B7%AF717%E8%99%9F" target="_blank" rel="noopener">🧭 開地圖</a>
+                <a class="btn primary" href="tel:+886978901161"><span>📞</span> <span data-i18n="btnCall">撥打</span></a>
+                <a class="btn" href="mailto:ian@mao-hua.com.tw"><span>✉️</span> <span data-i18n="btnEmail">Email</span></a>
+                <a class="btn ghost" href="zhang_yien_maohua.vcf" download><span>💾</span> <span data-i18n="btnSave">存聯絡人</span></a>
+                <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=408%20%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8D%97%E5%B1%AF%E5%8D%80%E6%B0%B8%E6%98%A5%E6%9D%B1%E4%B8%80%E8%B7%AF717%E8%99%9F" target="_blank" rel="noopener"><span>🧭</span> <span data-i18n="btnMap">開地圖</span></a>
               </div>
             </div>
 
             <div class="panel">
               <div class="qrs">
                 <div class="qrbox">
-                  <img src="assets/qr_add_contact.png" alt="Add contact QR">
+                  <img src="assets/qr_add_contact.png" alt="Add contact QR code" loading="lazy" width="96" height="96">
                   <div class="t">
-                    <div class="h">掃描加入聯絡人</div>
-                    <div class="p">一掃直接存到手機通訊錄（vCard）。</div>
+                    <div class="h" data-i18n="qrContact">掃描加入聯絡人</div>
+                    <div class="p" data-i18n="qrContactDesc">一掃直接存到手機通訊錄（vCard）。</div>
                   </div>
                 </div>
                 <div class="qrbox">
-                  <img src="assets/qr_map.png" alt="Map QR">
+                  <img src="assets/qr_map.png" alt="Map navigation QR code" loading="lazy" width="96" height="96">
                   <div class="t">
-                    <div class="h">掃描開啟地圖</div>
-                    <div class="p">導航到公司地址，現場拜訪更快。</div>
+                    <div class="h" data-i18n="qrMap">掃描開啟地圖</div>
+                    <div class="p" data-i18n="qrMapDesc">導航到公司地址，現場拜訪更快。</div>
                   </div>
                 </div>
               </div>
@@ -662,7 +893,7 @@
 
           <!-- Social Media Links -->
           <div class="social-links reveal delay-4">
-            <div class="title">聯絡我們</div>
+            <div class="title" data-i18n="contactUs">聯絡我們</div>
             <div class="social-grid">
               <a class="social-btn" href="https://line.me/ti/p/~beck830908" target="_blank" rel="noopener noreferrer" title="LINE">
                 <span class="icon">💬</span>
@@ -685,17 +916,87 @@
 
           <!-- Share Section -->
           <div class="share-section reveal delay-4">
-            <div class="title">分享名片</div>
+            <div class="title" data-i18n="shareCard">分享名片</div>
             <div class="share-buttons">
               <button id="shareBtn" class="share-btn" type="button">
                 <span>🔗</span>
-                <span>分享名片</span>
+                <span data-i18n="btnShare">分享名片</span>
               </button>
               <button id="copyBtn" class="share-btn" type="button">
                 <span>📋</span>
-                <span id="copyBtnText">複製連結</span>
+                <span id="copyBtnText" data-i18n="btnCopy">複製連結</span>
               </button>
             </div>
+          </div>
+
+          <!-- Bio Section -->
+          <div class="bio-section reveal delay-4">
+            <div class="title">
+              <span data-i18n="aboutMe">關於我</span>
+              <span class="bio-toggle" id="bioToggle" role="button" tabindex="0" aria-label="toggle bio">
+                <span id="bioToggleIcon">▼</span>
+              </span>
+            </div>
+            <div class="bio-content" id="bioContent">
+              <p class="bio-text" data-i18n="bioIntro">
+                我是張倚恩，在茂華實業股份有限公司擔任設備銷售部業務經理，專注於提供優質的設備銷售服務與專業諮詢。
+              </p>
+              <p class="bio-text" data-i18n="bioTitle">
+                <strong>專業領域：</strong>
+              </p>
+              <ul class="bio-list">
+                <li data-i18n="bioItem1">工業設備銷售與諮詢</li>
+                <li data-i18n="bioItem2">客戶需求分析與解決方案規劃</li>
+                <li data-i18n="bioItem3">售後服務與技術支援</li>
+                <li data-i18n="bioItem4">長期客戶關係維護</li>
+              </ul>
+              <p class="bio-text" data-i18n="bioContact">
+                歡迎隨時與我聯繫，討論您的設備需求或任何相關問題。我將竭誠為您服務！
+              </p>
+            </div>
+          </div>
+
+          <!-- Map Section -->
+          <div class="map-section reveal delay-4">
+            <div class="title">
+              <span data-i18n="locationMap">公司位置</span>
+              <span class="map-toggle" id="mapToggle" role="button" tabindex="0" aria-label="toggle map">
+                <span id="mapToggleIcon">▼</span>
+              </span>
+            </div>
+            <div class="map-container" id="mapContainer">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.7375!2d120.63588!3d24.13944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA4JzIyLjAiTiAxMjDCsDM4JzA5LjIiRQ!5e0!3m2!1szh-TW!2stw!4v1234567890"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Company Location Map">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Contact Form Section -->
+          <div class="contact-form-section reveal delay-4">
+            <div class="title" data-i18n="contactForm">聯絡表單</div>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <div class="form-group">
+                <label for="name" data-i18n="formName">姓名</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" data-i18n="formEmail">電子郵件</label>
+                <input type="email" id="contactEmail" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="message" data-i18n="formMessage">訊息</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span>📮</span>
+                <span data-i18n="btnSubmit">送出訊息</span>
+              </button>
+              <div id="formStatus" class="form-status" style="display: none;"></div>
+            </form>
           </div>
 
           </div>
@@ -710,20 +1011,173 @@
     <a href="zhang_yien_maohua.vcf" download title="存聯絡人">💾</a>
   </div>
 
-  <script>
+  <!-- Load external app.js for dynamic rendering -->
+  <script src="app.js"></script>
+
+  <!-- Legacy code below (will be removed once app.js is fully tested) -->
+  <script style="display:none">
+    // Internationalization (i18n) support
+    const translations = {
+      'zh-TW': {
+        name: '張倚恩',
+        department: '設備銷售部',
+        position: '業務經理',
+        taxId: '統編',
+        company: '公司',
+        companyName: '茂華實業股份有限公司',
+        mobile: '手機',
+        phone: '電話',
+        email: '信箱',
+        address: '地址',
+        addressValue: '408 台中市南屯區永春東一路717號',
+        btnCall: '撥打',
+        btnEmail: 'Email',
+        btnSave: '存聯絡人',
+        btnMap: '開地圖',
+        qrContact: '掃描加入聯絡人',
+        qrContactDesc: '一掃直接存到手機通訊錄（vCard）。',
+        qrMap: '掃描開啟地圖',
+        qrMapDesc: '導航到公司地址，現場拜訪更快。',
+        contactUs: '聯絡我們',
+        shareCard: '分享名片',
+        btnShare: '分享名片',
+        btnCopy: '複製連結',
+        btnCopied: '已複製！',
+        modeToggle: '切換淺色',
+        modeToggleDark: '切換深色',
+        langToggle: 'English',
+        contactForm: '聯絡表單',
+        formName: '姓名',
+        formEmail: '電子郵件',
+        formMessage: '訊息',
+        btnSubmit: '送出訊息',
+        formSuccess: '訊息已成功送出！我們會盡快回覆您。',
+        formError: '送出失敗，請稍後再試或直接發送郵件。',
+        formSending: '送出中...',
+        aboutMe: '關於我',
+        bioIntro: '我是張倚恩，在茂華實業股份有限公司擔任設備銷售部業務經理，專注於提供優質的設備銷售服務與專業諮詢。',
+        bioTitle: '專業領域：',
+        bioItem1: '工業設備銷售與諮詢',
+        bioItem2: '客戶需求分析與解決方案規劃',
+        bioItem3: '售後服務與技術支援',
+        bioItem4: '長期客戶關係維護',
+        bioContact: '歡迎隨時與我聯繫，討論您的設備需求或任何相關問題。我將竭誠為您服務！',
+        locationMap: '公司位置'
+      },
+      'en': {
+        name: 'Ian Chang',
+        department: 'Equipment Sales Dept.',
+        position: 'Sales Manager',
+        taxId: 'Tax ID',
+        company: 'Company',
+        companyName: 'Mao Hua Enterprise Co., Ltd',
+        mobile: 'Mobile',
+        phone: 'Phone',
+        email: 'Email',
+        address: 'Address',
+        addressValue: '717 Yongchun E. 1st Rd., Nantun Dist., Taichung City 408, Taiwan',
+        btnCall: 'Call',
+        btnEmail: 'Email',
+        btnSave: 'Save Contact',
+        btnMap: 'Open Map',
+        qrContact: 'Scan to Add Contact',
+        qrContactDesc: 'Scan to save to your phone contacts (vCard).',
+        qrMap: 'Scan to Open Map',
+        qrMapDesc: 'Navigate to our office address easily.',
+        contactUs: 'Contact Us',
+        shareCard: 'Share Card',
+        btnShare: 'Share Card',
+        btnCopy: 'Copy Link',
+        btnCopied: 'Copied!',
+        modeToggle: 'Light Mode',
+        modeToggleDark: 'Dark Mode',
+        langToggle: '中文',
+        contactForm: 'Contact Form',
+        formName: 'Name',
+        formEmail: 'Email',
+        formMessage: 'Message',
+        btnSubmit: 'Send Message',
+        formSuccess: 'Message sent successfully! We will reply soon.',
+        formError: 'Failed to send. Please try again later or email us directly.',
+        formSending: 'Sending...',
+        aboutMe: 'About Me',
+        bioIntro: 'I am Ian Chang, Sales Manager of Equipment Sales Department at Mao Hua Enterprise Co., Ltd, dedicated to providing quality equipment sales services and professional consultation.',
+        bioTitle: 'Expertise:',
+        bioItem1: 'Industrial Equipment Sales & Consultation',
+        bioItem2: 'Customer Needs Analysis & Solution Planning',
+        bioItem3: 'After-Sales Service & Technical Support',
+        bioItem4: 'Long-Term Customer Relationship Management',
+        bioContact: 'Feel free to contact me anytime to discuss your equipment needs or any related questions. I look forward to serving you!',
+        locationMap: 'Office Location'
+      }
+    };
+
+    let currentLang = 'zh-TW';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'zh-TW' ? 'zh-Hant' : 'en';
+
+      // Update all elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Update language toggle button
+      const langLabel = document.getElementById('langLabel');
+      if (langLabel) {
+        langLabel.textContent = translations[lang].langToggle;
+      }
+
+      // Update mode toggle button text
+      const modeLabel = document.getElementById('modeLabel');
+      if (modeLabel && document.body.classList.contains('light')) {
+        modeLabel.textContent = translations[lang].modeToggleDark;
+      } else if (modeLabel) {
+        modeLabel.textContent = translations[lang].modeToggle;
+      }
+
+      // Save preference
+      try { localStorage.setItem('mh_card_lang', lang); } catch (e) {}
+
+      // Track language change
+      if (typeof trackEvent === 'function') {
+        trackEvent('language_change', { language: lang });
+      }
+    }
+
+    // Initialize language
+    let initLang = null;
+    try { initLang = localStorage.getItem('mh_card_lang'); } catch (e) {}
+    if (initLang && translations[initLang]) {
+      setLanguage(initLang);
+    } else {
+      // Detect browser language
+      const browserLang = navigator.language || navigator.userLanguage;
+      if (browserLang && browserLang.startsWith('zh')) {
+        setLanguage('zh-TW');
+      } else {
+        setLanguage('en');
+      }
+    }
+
     requestAnimationFrame(() => document.body.classList.add('ready'));
 
     const body = document.body;
     const modeToggle = document.getElementById('modeToggle');
     const modeLabel = document.getElementById('modeLabel');
+    const langToggle = document.getElementById('langToggle');
 
     function setMode(light) {
       if (light) {
         body.classList.add('light');
-        modeLabel.textContent = '切換深色';
+        modeLabel.textContent = translations[currentLang].modeToggleDark;
       } else {
         body.classList.remove('light');
-        modeLabel.textContent = '切換淺色';
+        modeLabel.textContent = translations[currentLang].modeToggle;
       }
       try { localStorage.setItem('mh_card_mode', light ? 'light' : 'dark'); } catch (e) {}
     }
@@ -743,6 +1197,16 @@
     modeToggle.addEventListener('click', toggleMode);
     modeToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMode(); }
+    });
+
+    // Language toggle
+    function toggleLanguage() {
+      const newLang = currentLang === 'zh-TW' ? 'en' : 'zh-TW';
+      setLanguage(newLang);
+    }
+    langToggle.addEventListener('click', toggleLanguage);
+    langToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleLanguage(); }
     });
 
     const card = document.getElementById('tiltCard');
@@ -849,20 +1313,20 @@
         try {
           await navigator.clipboard.writeText(window.location.href);
           copyBtn.classList.add('success');
-          copyBtnText.textContent = '已複製！';
+          copyBtnText.textContent = translations[currentLang].btnCopied;
           trackEvent('copy_link', {
             method: 'clipboard',
             content_type: 'url'
           });
           setTimeout(() => {
-            copyBtnText.textContent = '複製連結';
+            copyBtnText.textContent = translations[currentLang].btnCopy;
             copyBtn.classList.remove('success');
           }, 2000);
         } catch (err) {
           console.error('Copy failed:', err);
-          copyBtnText.textContent = '複製失敗';
+          copyBtnText.textContent = currentLang === 'zh-TW' ? '複製失敗' : 'Failed';
           setTimeout(() => {
-            copyBtnText.textContent = '複製連結';
+            copyBtnText.textContent = translations[currentLang].btnCopy;
           }, 2000);
         }
       });
@@ -877,6 +1341,170 @@
         theme: newMode
       });
     };
+
+    // Bio section toggle
+    const bioToggle = document.getElementById('bioToggle');
+    const bioContent = document.getElementById('bioContent');
+    const bioToggleIcon = document.getElementById('bioToggleIcon');
+    let bioExpanded = false;
+
+    function toggleBio() {
+      bioExpanded = !bioExpanded;
+      if (bioExpanded) {
+        bioContent.classList.add('expanded');
+        bioToggleIcon.textContent = '▲';
+      } else {
+        bioContent.classList.remove('expanded');
+        bioToggleIcon.textContent = '▼';
+      }
+
+      // Track bio toggle
+      if (typeof trackEvent === 'function') {
+        trackEvent('bio_toggle', {
+          expanded: bioExpanded
+        });
+      }
+    }
+
+    if (bioToggle) {
+      bioToggle.addEventListener('click', toggleBio);
+      bioToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleBio();
+        }
+      });
+    }
+
+    // Map section toggle
+    const mapToggle = document.getElementById('mapToggle');
+    const mapContainer = document.getElementById('mapContainer');
+    const mapToggleIcon = document.getElementById('mapToggleIcon');
+    let mapExpanded = false;
+
+    function toggleMap() {
+      mapExpanded = !mapExpanded;
+      if (mapExpanded) {
+        mapContainer.classList.add('expanded');
+        mapToggleIcon.textContent = '▲';
+      } else {
+        mapContainer.classList.remove('expanded');
+        mapToggleIcon.textContent = '▼';
+      }
+
+      // Track map toggle
+      if (typeof trackEvent === 'function') {
+        trackEvent('map_toggle', {
+          expanded: mapExpanded
+        });
+      }
+    }
+
+    if (mapToggle) {
+      mapToggle.addEventListener('click', toggleMap);
+      mapToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMap();
+        }
+      });
+    }
+
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Show sending state
+        submitBtn.disabled = true;
+        submitBtn.querySelector('[data-i18n="btnSubmit"]').textContent = translations[currentLang].formSending;
+        formStatus.style.display = 'none';
+
+        try {
+          const formData = new FormData(contactForm);
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Success
+            formStatus.textContent = translations[currentLang].formSuccess;
+            formStatus.className = 'form-status success';
+            formStatus.style.display = 'block';
+            contactForm.reset();
+            submitBtn.classList.add('success');
+
+            // Track form submission
+            trackEvent('form_submit', {
+              form_type: 'contact_form',
+              status: 'success'
+            });
+
+            // Reset button after delay
+            setTimeout(() => {
+              submitBtn.querySelector('[data-i18n="btnSubmit"]').textContent = translations[currentLang].btnSubmit;
+              submitBtn.classList.remove('success');
+              formStatus.style.display = 'none';
+            }, 5000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          // Error
+          formStatus.textContent = translations[currentLang].formError;
+          formStatus.className = 'form-status error';
+          formStatus.style.display = 'block';
+
+          // Track form error
+          trackEvent('form_submit', {
+            form_type: 'contact_form',
+            status: 'error'
+          });
+
+          submitBtn.querySelector('[data-i18n="btnSubmit"]').textContent = translations[currentLang].btnSubmit;
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    }
+
+    // Register Service Worker for PWA offline support
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration.scope);
+
+            // Track PWA installation
+            if (typeof trackEvent === 'function') {
+              trackEvent('pwa_registered', {
+                scope: registration.scope
+              });
+            }
+          })
+          .catch((error) => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+
+      // Detect PWA installation
+      window.addEventListener('appinstalled', () => {
+        console.log('PWA installed');
+        if (typeof trackEvent === 'function') {
+          trackEvent('pwa_installed', {
+            platform: navigator.platform
+          });
+        }
+      });
+    }
   </script>
 </body>
 </html>

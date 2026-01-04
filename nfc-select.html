@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>選擇分享版本 | NFC 智能名片</title>
+  <meta name="theme-color" content="#0B0F1A" />
+  <style>
+    :root {
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      --ease: cubic-bezier(.2,.8,.2,1);
+
+      --bg0:#05060B; --bg1:#070A12;
+      --panelA: rgba(255,255,255,.07);
+      --panelB: rgba(255,255,255,.04);
+      --stroke: rgba(255,255,255,.12);
+      --stroke2: rgba(255,255,255,.18);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --accent1: #2AA7FF;
+      --accent2: #E6453A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1100px 700px at 12% 18%, rgba(42,167,255,0.26), transparent 55%),
+        radial-gradient(900px 650px at 88% 22%, rgba(230,69,58,0.22), transparent 58%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panelA), var(--panelB));
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 26px 80px rgba(0,0,0,.55);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .header {
+      margin-bottom: 32px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .profile-grid {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: var(--panelA);
+      color: var(--text);
+      text-decoration: none;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      will-change: transform;
+    }
+
+    .profile-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--stroke2);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 12px 26px rgba(0,0,0,.16);
+    }
+
+    .profile-btn:active {
+      transform: translateY(0);
+    }
+
+    .profile-icon {
+      font-size: 32px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-name {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+
+    .profile-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .waiting-state {
+      display: none;
+      padding: 40px 20px;
+    }
+
+    .waiting-state.active {
+      display: block;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top-color: var(--accent1);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .waiting-text {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px 18px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .profile-btn {
+        padding: 16px 18px;
+      }
+
+      .profile-icon {
+        font-size: 28px;
+      }
+
+      .profile-name {
+        font-size: 15px;
+      }
+
+      .profile-desc {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <!-- Selection State -->
+      <div id="selectionState">
+        <div class="header">
+          <h1><span id="ownerName">張倚恩</span> 的名片</h1>
+          <p>請選擇要分享的版本</p>
+        </div>
+
+        <div class="profile-grid">
+          <button class="profile-btn" data-profile="vendor">
+            <div class="profile-icon">🏭</div>
+            <div class="profile-info">
+              <div class="profile-name">廠商夥伴</div>
+              <div class="profile-desc">基本聯絡資訊</div>
+            </div>
+          </button>
+
+          <button class="profile-btn" data-profile="client">
+            <div class="profile-icon">👔</div>
+            <div class="profile-info">
+              <div class="profile-name">潛在客戶</div>
+              <div class="profile-desc">含產品介紹與服務項目</div>
+            </div>
+          </button>
+
+          <button class="profile-btn" data-profile="friend">
+            <div class="profile-icon">👥</div>
+            <div class="profile-info">
+              <div class="profile-name">好友</div>
+              <div class="profile-desc">含私人社交帳號</div>
+            </div>
+          </button>
+
+          <button class="profile-btn" data-profile="association">
+            <div class="profile-icon">🤝</div>
+            <div class="profile-info">
+              <div class="profile-name">商會成員</div>
+              <div class="profile-desc">含完整職務與公司資訊</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="footer">
+          NFC 智能名片系統
+        </div>
+      </div>
+
+      <!-- Waiting State (for recipient) -->
+      <div id="waitingState" class="waiting-state">
+        <div class="spinner"></div>
+        <div class="waiting-text">
+          ⏳ 正在連線...<br><br>
+          請持有者選擇分享版本
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Determine if user is owner or recipient
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode'); // 'select' for owner, 'wait' for recipient
+    const sessionId = params.get('session');
+
+    const selectionState = document.getElementById('selectionState');
+    const waitingState = document.getElementById('waitingState');
+
+    // Load config to get owner name
+    async function loadConfig() {
+      try {
+        const response = await fetch('config.json');
+        const config = await response.json();
+        document.getElementById('ownerName').textContent = config.personal.name;
+        return config;
+      } catch (error) {
+        console.error('Failed to load config:', error);
+        return null;
+      }
+    }
+
+    if (mode === 'wait') {
+      // Recipient mode: show waiting state
+      selectionState.style.display = 'none';
+      waitingState.classList.add('active');
+
+      // TODO: In production, use WebSocket/Supabase Realtime to listen for selection
+      // For now, we'll simulate with setTimeout
+      setTimeout(() => {
+        // Simulating owner selection
+        // In production, this would be triggered by real-time update
+        const selectedProfile = 'client'; // This would come from WebSocket
+        window.location.href = `/?v=${selectedProfile}`;
+      }, 5000);
+
+    } else {
+      // Owner mode: show selection UI
+      loadConfig();
+
+      // Setup click handlers for profile buttons
+      document.querySelectorAll('.profile-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const profile = btn.getAttribute('data-profile');
+
+          // In production, this would:
+          // 1. Update the session in database with selected profile
+          // 2. Notify recipient via WebSocket
+          // For MVP, we redirect directly
+
+          // Generate shareable link
+          const baseUrl = window.location.origin;
+          const shareUrl = `${baseUrl}/?v=${profile}`;
+
+          // Show confirmation and redirect
+          alert(`已選擇：${btn.querySelector('.profile-name').textContent}\n\n對方將看到此版本的名片`);
+
+          // In production with WebSocket:
+          // await updateSession(sessionId, profile);
+          // Recipient will auto-redirect via WebSocket listener
+
+          // For now, just copy link to clipboard
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            btn.innerHTML = '<div class="profile-icon">✓</div><div class="profile-info"><div class="profile-name">已選擇！</div><div class="profile-desc">連結已複製，可分享給對方</div></div>';
+            btn.style.background = 'rgba(42,167,255,0.15)';
+          });
+        });
+      });
+    }
+
+    // Keyboard accessibility
+    document.querySelectorAll('.profile-btn').forEach(btn => {
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
